@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Study Sprint Timer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>Study Sprint Timer</h1>
+      <p class="subtitle">Fast, focused, and engaging study sprints.</p>
+    </header>
+
+    <!-- Setup / Home View -->
+    <section id="setup-view" class="view">
+      <h2>Start a new sprint</h2>
+      <label for="goal-input">What’s your goal for this sprint?</label>
+      <input id="goal-input" type="text" placeholder="e.g., Finish 2 pages of notes" />
+      <div class="hint-text">Default sprint: 25 minutes focus + 5 minutes break.</div>
+      <div class="buttons-row">
+        <button id="start-sprint-btn" class="primary">Start Sprint</button>
+        <button id="skip-goal-btn" class="secondary">Start Without Goal</button>
+      </div>
+
+      <section id="stats-panel">
+        <h3>Today’s Stats</h3>
+        <p><strong>Today’s sprints:</strong> <span id="today-sprints">0</span></p>
+        <p><strong>Current streak (days):</strong> <span id="streak">0</span></p>
+        <p><strong>Total sprints:</strong> <span id="total-sprints">0</span></p>
+        <p><strong>Avg motivation:</strong> <span id="avg-motivation">–</span></p>
+      </section>
+    </section>
+
+    <!-- Sprint View -->
+    <section id="sprint-view" class="view hidden">
+      <h2>Focus Sprint</h2>
+      <p class="goal-label">
+        Goal: <span id="current-goal-label">(none)</span>
+      </p>
+      <div class="timer-circle">
+        <span id="sprint-timer-display">25:00</span>
+      </div>
+      <p id="stuck-hint" class="hint-text hidden">
+        Stuck? Try breaking your task into a smaller step or rewriting your goal.
+      </p>
+      <div class="buttons-row">
+        <button id="pause-btn" class="secondary">Pause</button>
+        <button id="resume-btn" class="secondary hidden">Resume</button>
+        <button id="end-sprint-btn" class="danger">End Sprint</button>
+      </div>
+    </section>
+
+    <!-- Break View -->
+    <section id="break-view" class="view hidden">
+      <h2>Break Time</h2>
+      <p>Nice work! Take a short break.</p>
+      <div class="timer-circle">
+        <span id="break-timer-display">05:00</span>
+      </div>
+      <div class="buttons-row">
+        <button id="skip-break-btn" class="secondary">Skip Break</button>
+      </div>
+    </section>
+
+    <!-- Reflection View -->
+    <section id="reflection-view" class="view hidden">
+      <h2>Reflection</h2>
+      <p>How did that sprint feel?</p>
+      <label>Motivation (1 = low, 5 = high)</label>
+      <div class="rating-row">
+        <button class="rating-btn" data-rating="1">1</button>
+        <button class="rating-btn" data-rating="2">2</button>
+        <button class="rating-btn" data-rating="3">3</button>
+        <button class="rating-btn" data-rating="4">4</button>
+        <button class="rating-btn" data-rating="5">5</button>
+      </div>
+      <textarea id="reflection-notes" placeholder="Optional: Write a quick note about what went well or what was hard."></textarea>
+      <div class="buttons-row">
+        <button id="save-reflection-btn" class="primary">Save & Finish</button>
+      </div>
+      <p id="reflection-error" class="error-text hidden">Please select a motivation rating.</p>
+    </section>
+
+    <footer>
+      <button id="back-home-btn" class="link-btn hidden">← Back to Home</button>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

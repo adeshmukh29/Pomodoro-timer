@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f5f7fb;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+}
+
+.app-container {
+  max-width: 520px;
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px 24px 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.view {
+  margin-top: 12px;
+}
+
+.hidden {
+  display: none;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d3d7e3;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.buttons-row {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+
+button {
+  border-radius: 999px;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+button.primary {
+  background: #4f46e5;
+  color: #fff;
+}
+
+button.secondary {
+  background: #e5e7f3;
+  color: #111827;
+}
+
+button.danger {
+  background: #f97373;
+  color: #fff;
+}
+
+button.link-btn {
+  background: transparent;
+  color: #4f46e5;
+  padding: 4px 0;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.timer-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 10px solid #e5e7f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px auto;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.goal-label {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+.hint-text {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.error-text {
+  font-size: 0.85rem;
+  color: #b91c1c;
+  margin-top: 4px;
+}
+
+#stats-panel {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  font-size: 0.9rem;
+}
+
+.rating-row {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0 4px;
+}
+
+.rating-btn {
+  flex: 1;
+  padding: 6px 0;
+  background: #e5e7f3;
+}
+
+.rating-btn.selected {
+  background: #4f46e5;
+  color: #fff;
+}
+
+footer {
+  margin-top: 8px;
+  text-align: left;
+}
