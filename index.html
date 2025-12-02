@@ -26,10 +26,14 @@
       <section id="stats-panel">
         <h3>Today’s Stats</h3>
         <p><strong>Today’s sprints:</strong> <span id="today-sprints">0</span></p>
-        <p><strong>Current streak (days):</strong> <span id="streak">0</span></p>
+        <p><strong>Current streak (days):</strong> <span id="streak" class="streak-highlight">0</span></p>
         <p><strong>Total sprints:</strong> <span id="total-sprints">0</span></p>
         <p><strong>Avg motivation:</strong> <span id="avg-motivation">–</span></p>
       </section>
+      <p class="hint-text">
+  Every sprint you complete adds to your streak — come back tomorrow to keep it going.
+</p>
+
     </section>
 
     <!-- Sprint View -->
@@ -42,12 +46,13 @@
         <span id="sprint-timer-display">25:00</span>
       </div>
       <p id="stuck-hint" class="hint-text hidden">
-        Stuck? Try breaking your task into a smaller step or rewriting your goal.
-      </p>
+  Feeling stuck? Try rewriting your goal into a smaller step or removing distractions for 5 minutes.
+</p>
+
       <div class="buttons-row">
         <button id="pause-btn" class="secondary">Pause</button>
         <button id="resume-btn" class="secondary hidden">Resume</button>
-        <button id="end-sprint-btn" class="danger">End Sprint</button>
+        <button id="end-sprint-btn" class="danger">End &amp; Reflect</button>
       </div>
     </section>
 
@@ -59,7 +64,8 @@
         <span id="break-timer-display">05:00</span>
       </div>
       <div class="buttons-row">
-        <button id="skip-break-btn" class="secondary">Skip Break</button>
+        <button id="skip-break-btn" class="secondary">Skip Break &amp; Reflect</button>
+
       </div>
     </section>
 
@@ -67,6 +73,10 @@
     <section id="reflection-view" class="view hidden">
       <h2>Reflection</h2>
       <p>How did that sprint feel?</p>
+      <p class="hint-text">
+  This helps you track your motivation over time, not your performance.
+</p>
+
       <label>Motivation (1 = low, 5 = high)</label>
       <div class="rating-row">
         <button class="rating-btn" data-rating="1">1</button>
@@ -85,6 +95,9 @@
     <footer>
       <button id="back-home-btn" class="link-btn hidden">← Back to Home</button>
     </footer>
+      <div id="toast" class="toast hidden">
+    Sprint saved to Today’s Stats ✅
+  </div>
   </div>
 
   <script src="script.js"></script>

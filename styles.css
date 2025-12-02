@@ -168,3 +168,45 @@ footer {
   margin-top: 8px;
   text-align: left;
 }
+
+/* Iteration 1 – timer pulse animation */
+.timer-circle.running {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.25);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(79, 70, 229, 0);
+  }
+}
+/* Iteration 1 – toast message */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111827;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+/* Iteration 2 – highlight streak */
+.streak-highlight {
+  font-weight: 700;
+}
+
+/* Iteration 2 – color for different modes */
+.timer-circle.sprint-mode {
+  border-color: #4f46e5; /* focus */
+}
+
+.timer-circle.break-mode {
+  border-color: #10b981; /* break / reward */
+}
+

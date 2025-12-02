@@ -1,7 +1,8 @@
 // ---------- CONFIG ----------
 const POMODORO_MINUTES = 25;   // change to 0.2 (12 sec) for testing
 const BREAK_MINUTES = 5;       // change to 0.1 (6 sec) for testing
-const IDLE_THRESHOLD_MS = 20000; // 20s idle -> show "Stuck?" hint
+const IDLE_THRESHOLD_MS = 12000; // 12s idle -> show "Stuck?" hint (Iteration 2)
+ // 20s idle -> show "Stuck?" hint
 
 // ---------- STATE ----------
 let timerInterval = null;
@@ -44,6 +45,8 @@ const todaySprintsSpan = document.getElementById("today-sprints");
 const streakSpan = document.getElementById("streak");
 const totalSprintsSpan = document.getElementById("total-sprints");
 const avgMotivationSpan = document.getElementById("avg-motivation");
+const toast = document.getElementById("toast"); // Iteration 1
+
 
 // ---------- INIT ----------
 init();
@@ -101,7 +104,9 @@ function attachEventListeners() {
     reflectionError.classList.add("hidden");
     setView("setup");
     backHomeBtn.classList.add("hidden");
+    showToast(); // Iteration 1: confirm that the sprint was saved
   });
+
 
   backHomeBtn.addEventListener("click", () => {
     stopTimer();
@@ -147,6 +152,13 @@ function startSprint(goalText) {
   currentGoal = goalText || "(no specific goal)";
   currentGoalLabel.textContent = currentGoal;
   currentMode = "sprint";
+  // Iteration 2: set sprint mode border
+  const sprintCircle = document.querySelector("#sprint-view .timer-circle");
+  if (sprintCircle) {
+    sprintCircle.classList.add("sprint-mode");
+    sprintCircle.classList.remove("break-mode");
+  }
+
   idleHintShown = false;
   stuckHint.classList.add("hidden");
   goalInput.value = "";
@@ -156,6 +168,13 @@ function startSprint(goalText) {
 
 function startBreak() {
   currentMode = "break";
+    // Iteration 2: set break mode border
+  const breakCircle = document.querySelector("#break-view .timer-circle");
+  if (breakCircle) {
+    breakCircle.classList.add("break-mode");
+    breakCircle.classList.remove("sprint-mode");
+  }
+
   startTimer(BREAK_MINUTES * 60 * 1000, "break");
   setView("break");
 }
@@ -168,6 +187,15 @@ function startTimer(durationMs, mode) {
   timerEndTime = Date.now() + durationMs;
 
   updateTimerDisplay(remainingMs);
+    // Iteration 1: add 'running' class to the active timer circle
+  if (currentMode === "sprint") {
+    const sprintCircle = document.querySelector("#sprint-view .timer-circle");
+    sprintCircle && sprintCircle.classList.add("running");
+  } else if (currentMode === "break") {
+    const breakCircle = document.querySelector("#break-view .timer-circle");
+    breakCircle && breakCircle.classList.add("running");
+  }
+
 
   timerInterval = setInterval(() => {
     if (isPaused) return;
@@ -227,7 +255,14 @@ function stopTimer() {
   resumeBtn.classList.add("hidden");
   stuckHint.classList.add("hidden");
   idleHintShown = false;
+
+    // Iteration 1 + 2: remove extra classes from timer circles
+  document.querySelectorAll(".timer-circle").forEach((circle) => {
+    circle.classList.remove("running", "sprint-mode", "break-mode");
+  });
+
 }
+
 
 function timerComplete() {
   stopTimer();
@@ -327,6 +362,11 @@ function updateStatsUI() {
 
   todaySprintsSpan.textContent = todaySessions.length;
   streakSpan.textContent = state.streak;
+  // Iteration 2: show fire icon for streak >= 3
+  if (state.streak >= 3) {
+    streakSpan.textContent = `${state.streak} 🔥`;
+  }
+
   totalSprintsSpan.textContent = state.sessions.length;
 
   if (allRatings.length === 0) {
@@ -337,6 +377,16 @@ function updateStatsUI() {
     avgMotivationSpan.textContent = avg.toFixed(1);
   }
 }
+// ---------- TOAST ----------
+// Iteration 1: show a small confirmation after saving reflection
+function showToast() {
+  if (!toast) return;
+  toast.classList.remove("hidden");
+  setTimeout(() => {
+    toast.classList.add("hidden");
+  }, 2200);
+}
+
 
 function getTodayISO() {
   const d = new Date();
