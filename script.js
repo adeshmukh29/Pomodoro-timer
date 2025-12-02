@@ -128,24 +128,31 @@ function attachEventListeners() {
 
 // ---------- VIEW HANDLING ----------
 function setView(viewName) {
+  // Hide all views
   setupView.classList.add("hidden");
   sprintView.classList.add("hidden");
   breakView.classList.add("hidden");
   reflectionView.classList.add("hidden");
+
+  // Reset mode classes on <body>
+  document.body.classList.remove("sprint-mode", "break-mode");
 
   if (viewName === "setup") {
     setupView.classList.remove("hidden");
   } else if (viewName === "sprint") {
     sprintView.classList.remove("hidden");
     backHomeBtn.classList.remove("hidden");
+    document.body.classList.add("sprint-mode"); // <-- very visible
   } else if (viewName === "break") {
     breakView.classList.remove("hidden");
     backHomeBtn.classList.remove("hidden");
+    document.body.classList.add("break-mode"); // <-- very visible
   } else if (viewName === "reflection") {
     reflectionView.classList.remove("hidden");
     backHomeBtn.classList.remove("hidden");
   }
 }
+
 
 // ---------- TIMER LOGIC ----------
 function startSprint(goalText) {

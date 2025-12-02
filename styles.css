@@ -209,4 +209,42 @@ footer {
 .timer-circle.break-mode {
   border-color: #10b981; /* break / reward */
 }
+/* --------- Mode differentiation (VERY VISIBLE) --------- */
+
+/* Whole-page background changes */
+body.sprint-mode {
+  background: #f3f0ff; /* light purple for focus */
+}
+
+body.break-mode {
+  background: #ebfcec; /* light green for break */
+}
+
+/* Mode badge above timer */
+.mode-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.mode-badge.sprint {
+  background: #4f46e5; /* purple */
+}
+
+.mode-badge.break {
+  background: #10b981; /* green */
+}
+
+/* Optional: make the sprint/break headings match the mode */
+body.sprint-mode #sprint-view h2 {
+  color: #4f46e5;
+}
+
+body.break-mode #break-view h2 {
+  color: #047857;
+}
 
